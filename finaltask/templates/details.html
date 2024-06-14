@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{mve.poster.url}}" width="300" height="300" style="margin-top:20px;">
+        </div>
+        <div class="col-md-8" style="margin-top:20px;">
+            <h4 class="card-title">{{mve.title}}</h4>
+            <h6 class="card-text">{{mve.category}}</h6>
+            <h6 class="card-text">{{mve.desc}}</h6>
+            <h6 class="card-text">{{mve.actors}}</h6>
+            <h6 class="card-text">{{mve.release_date}}</h6>
+            <h6>
+                {% if rvw %}
+                    <ul>
+                        {% for i in rvw %}
+                            <li>
+                                <strong>Rating:</strong> {{ i.rating }}<br>
+                                <strong>Review:</strong> {{ i.review }}
+                            </li>
+                {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No reviews/ratings yet.</p>
+                {% endif %}
+
+<!--            <a href="{% url 'moviereviewapp:review' mve.id %}" class="btn btn-success">Write a Review/Give Rating</a>-->
+<!--            <a href="{% url 'moviereviewapp:review' mve.id %}" class="btn btn-success">Give your Rating</a>-->
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

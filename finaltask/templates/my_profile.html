@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+{% block body %}
+<form action='' method="post" >
+    {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8" style="margin-top:20px;">
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label style="margin-left:100px;"><b>First Name :</b></label>&nbsp;
+                            <label style="margin-left:5px;"><b>{{request.user.first_name}}</b></label>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-left:100px;"><b>Last Name :</b></label>
+                            <label style="margin-left:5px;"><b>{{request.user.last_name}}</b></label>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-left:100px;"><b>Email</b></label>&nbsp;
+                            <label style="margin-left:35px;"><b>: {{request.user.email}}</b></label>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-left:100px;"><b>User Name :</b></label>&nbsp;
+                            <label style="margin-left:5px;"><b>{{request.user.username}}</b></label>
+                        </div>
+                        <div class="form-group">
+
+                            <a href="{% url 'moviereviewapp:update_profile' user.id %}" style="margin-left:100px;" class="btn btn-primary">Update</a>
+                            <a href="{% url 'moviereviewapp:delete_profile' user.id %}" class="btn btn-primary">Delete</a>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{mve.poster.url}}" width="300" height="300" style="margin-top:20px;">
+        </div>
+        <div class="col-md-8" style="margin-top:20px;">
+            <h4 class="card-title">{{mve.title}}</h4>
+
+            <h6>
+                {% if rvw %}
+                    <ul>
+                        {% for i in rvw %}
+                            <li style="margin-top:10px;">
+                                <strong>Rating:</strong> {{ i.rating }}<br>
+                                <strong>Review:</strong> {{ i.review }}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No reviews/ratings yet.</p>
+                {% endif %}
+            </h6>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <input type="text" name="rating" placeholder="Give your Rating"><br>
+                    <textarea style="height:400px;width:300px;margin-top:20px;" name="review" placeholder="Write your review"></textarea><br>
+                    <input type="submit" class="btn btn-success" style="margin-top:10px;margin-left:100px;" align="center">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'user_nav.html' %}
+{% block body %}
+<form action='' method="post" >
+    {% csrf_token %}
+        {% if luser == request.user.id %}
+            <div class="container">
+                <div class="row">
+                    {% if movie_list %}
+                        {% for i in movie_list %}
+                            <div class="col-md-4">
+                                <div class="card" style="width:18rem;height:35rem;margin-top:20px;margin-bottom:20px;">
+                                    <form method="POST" enctype="multipart/form-data">
+                                        <img src="{{i.poster.url}}" class="card-img-top" alt="..." width="250px;" height="200px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{i.title}}</h5>
+                                            <h6 class="card-text">{{i.category}}</h6>
+                                            <h6 class="card-text">{{i.release_date}}</h6>
+                                            <h6 class="card-text">{{i.desc}}</h6>
+                                            <h6 class="card-text">{{i.actors}}</h6>
+                                            <h6 class="card-text">{{i.utube_link}}</h6>
+                                            <a href="{% url 'moviereviewapp:review' i.id %}" class="btn btn-primary" style="margin-left:30px;">Add Review/Rating</a><br>
+                                            <a href="{% url 'moviereviewapp:update' i.id %}" class="btn btn-primary" style="margin-left:30px;margin-top:10px;">Update</a>
+                                            <a href="{% url 'moviereviewapp:delete' i.id %}" class="btn btn-primary" style="margin-top:10px;">Delete</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                {% endfor %}
+            {% endif %}
+                {% if detail_list %}
+                        {% for i in detail_list %}
+                            <div class="col-md-4">
+                                <div class="card" style="width:18rem;height:30rem;margin-top:20px;margin-bottom:20px;">
+                                    <div class="card-body">
+                                        <h6 class="card-text">{{i.review}}</h6>
+                                        <h6 class="card-text">{{i.rating}}</h6>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p style="margin-top:20px;"><b>No Movies to Show</b></p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+</form>
+{% endblock %}

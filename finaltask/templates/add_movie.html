@@ -1,0 +1,45 @@
+{% extends 'navbar.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <br><label style="margin-right:100px;"><b>Title<b></b></label>&nbsp;
+                        <input type="text" name="title" placeholder="Enter movie name"><br>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right:60px;"><b>Category<b></b></label>&nbsp;
+                        <input type="text" name="category" placeholder="Enter movie category"><br>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right:95px;"><b>Desc<b></b></label>&nbsp;
+                        <input type="text" name="desc" placeholder="Enter movie details"><br>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right:80px;"><b>Actors<b></b></label>&nbsp;
+                        <input type="text" name="actors" placeholder="Enter actors in the movie"><br>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right:30px;"><b>Release Date<b></b></label>&nbsp;
+                        <input type="date" name="release_date" placeholder="Enter release date"><br>
+                        </div>
+                    <div class="form-group">
+                        <label style="margin-right:80px;"><b>Poster<b></b></label>&nbsp;
+                        <input type="file" name="poster"><br>
+                    </div>
+                    <div class="form-group">
+                        <label  style="margin-right:40px;"><b>Trailer Link<b></b></label>&nbsp;
+                        <input type="url" name="utube_link" placeholder="Enter youtube trailer link"><br>
+                    </div>
+                    <input type="submit" class="btn btn-success" style="margin-left:100px;"><br>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
